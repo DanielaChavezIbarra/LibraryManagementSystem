@@ -1,14 +1,33 @@
 {
-    "version": "0.2.0",
-    "configurations": [
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug C++ Program",
+      "program": "C:\\Users\\danie\\OneDrive\\Escritorio\\ITESM\\C++\\pruebas\\otraPrueba.exe",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "C++: Build"
+    },
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "c:/Users/danie/OneDrive/Escritorio/ITESM/C++/HW2",
+      "program": "c:/Users/danie/OneDrive/Escritorio/ITESM/C++/HW2/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
         {
-            "type": "lldb",
-            "request": "launch",
-            "name": "Debug C++ Program",
-            "program": "${workspaceFolder}/school_admin",
-            "args": [],
-            "cwd": "${workspaceFolder}",
-            "preLaunchTask": "C++: Build"
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
         }
-    ]
+      ]
+    }
+  ]
 }

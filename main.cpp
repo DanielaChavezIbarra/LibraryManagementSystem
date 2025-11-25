@@ -18,6 +18,8 @@ int main() {
     library.addMember(Member("Alice", "M01", 3));
     library.addMember(Member("Bob", "M02", 5));
 
+
+
     int option;
     do {
         cout << "===== Library Menu =====" << endl;
@@ -27,6 +29,9 @@ int main() {
         cout << "4. List active loans" << endl;
         cout << "5. Borrow a book" << endl;
         cout << "6. Return a book" << endl;
+        cout << "7. Remove a book" << endl;
+        cout << "8. Remove a member" << endl;
+        cout << "9. Search a book by either name or isbn"<< endl;
         cout << "0. Exit" << endl;
         cout << "Select option: ";
         cin >> option;
@@ -65,7 +70,66 @@ int main() {
             library.returnBook(memberId, isbn, date);
             cout << endl;
         }
-    } while (option != 0);
+        // Modified part to include option 7 for removing a book
+        else if (option == 7) {
+            string isbn;
+            cout << "Book ISBN to remove: ";
+            cin >> isbn;
+            if (library.removeBook(isbn)) {
+                cout << "Book removed successfully." << endl;
+            } else {
+                cout << "Failed to remove book. It may not exist or is currently on loan." << endl;
+            }
+            cout << endl;
+        }
+        // Modified part to include option 8: Remove member from library
+        else if (option == 8) {
+            string memberId;
+            cout << "Member ID to remove: ";
+            cin >> memberId;
+            if (library.removeMember(memberId)) {
+                cout << "Member removed successfully." << endl;
+            } else {
+                cout << "Failed to remove member." << endl;
+            }
+            cout << endl;
+        }
+        // New option added to search for a book by name or ISBN
+        else if (option == 9) {
+            string isbn, bookName;
+            int searchOption;
+            cout << "Select search by: 1. ISBN 2. Name : ";
+            cin >> searchOption;
+            if (searchOption == 1) {
+                cout << "Enter ISBN: ";
+                cin >> isbn;
+                Book* book = library.getBookByISBN(isbn);
+                if (book) {
+                    book->printInfo();
+                } else {
+                    cout << "Book not found." << endl;
+                }
+            } else if (searchOption == 2) {
+                cout << "Enter Book Name: ";
+                cin.ignore(); // To ignore the newline character left by previous input
+                getline(cin, bookName);
+
+                Book* book = library.getBookByTitle(bookName);
+
+                if (book) {
+                    book->printInfo();
+                    }
+                else {
+                    cout << "Book not found." << endl;
+                } 
+                }
+            } 
+            else {
+                cout << "Invalid search option." << endl;
+
+            }
+        } 
+    while (option != 0);
 
     cout << "Goodbye!" << endl;
     return 0;

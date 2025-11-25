@@ -138,3 +138,37 @@ bool Library::returnBook(const string& memberId, const string& isbn, const strin
     return true;
 }
 
+bool Library::removeBook(const string& isbn) {
+    for (size_t i = 0; i < books.size(); i++) {
+        if (books[i].getIsbn() == isbn) {
+            books.erase(books.begin() + i);  
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Library::removeMember(const string& memberId) {
+    for (size_t i = 0; i < members.size(); i++) {
+        if (members[i].getId() == memberId) {
+            members.erase(members.begin() + i);  
+            return true;
+        }
+    }
+    return false;
+}
+
+Book* Library::getBookByISBN(const string& isbn) {
+    return findBook(isbn);
+}
+
+Book* Library::getBookByTitle(const string& title) {
+    for (auto& book : books) {
+        if (book.getTitle() == title) {
+            return &book;
+        }
+    }
+    return nullptr;
+}
+
+
