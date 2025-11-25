@@ -15,6 +15,12 @@ int main() {
     library.addBook(Book("The Pragmatic Programmer", "Andrew Hunt", "2222", 1999));
     library.addBook(Book("Design Patterns", "Gamma et al.", "3333", 1994));
 
+    //preload CDs
+    library.addCD(CD("Greatest Hits", "Queen", "4444", 1981));
+    library.addCD(CD("Abbey Road", "The Beatles", "9999", 1969));
+    library.addCD(CD("21", "Adele", "8888", 2011));
+
+    
     library.addMember(Member("Alice", "M01", 3));
     library.addMember(Member("Bob", "M02", 5));
 
@@ -32,6 +38,9 @@ int main() {
         cout << "7. Remove a book" << endl;
         cout << "8. Remove a member" << endl;
         cout << "9. Search a book by either name or isbn"<< endl;
+        cout << "10. List CDs" << endl;
+        cout << "11. Borrow a CD" << endl;
+        cout << "12. Return a CD" << endl;
         cout << "0. Exit" << endl;
         cout << "Select option: ";
         cin >> option;
@@ -124,6 +133,34 @@ int main() {
                 } 
                 }
             } 
+            // Option added for CD functionality
+            else if (option == 10) {
+                string memberId, upc, date;
+                library.listCDs();
+            }
+            else if (option == 11) {
+                string memberId, upc, date;
+                cout << "Member ID: ";
+                cin >> memberId;
+                cout << "CD UPC: ";
+                cin >> upc;
+                cout << "Borrow date (YYYY-MM-DD): ";
+                cin >> date;
+                // Implement borrowCD similarly to borrowBook
+                cout << "CD borrowing functionality not yet implemented." << endl;
+            }
+            else if (option == 12) {
+                string memberId, upc, date;
+                cout << "Member ID: ";
+                cin >> memberId;
+                cout << "CD UPC: ";
+                cin >> upc;
+                cout << "Return date (YYYY-MM-DD): ";
+                cin >> date;
+                // Implement returnCD similarly to returnBook
+                cout << "CD return functionality not yet implemented." << endl;
+
+            }
             else {
                 cout << "Invalid search option." << endl;
 

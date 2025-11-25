@@ -53,6 +53,11 @@ void Library::addBook(const Book& book) {
     books.push_back(book);
 }
 
+// New method to add a CD to the library
+void Library::addCD(const CD& cd) {
+    cds.push_back(cd);
+}
+
 void Library::addMember(const Member& member) {
     members.push_back(member);
 }
@@ -61,6 +66,14 @@ void Library::listBooks() const {
     cout << "=== Books in library ===" << endl;
     for (const auto& book : books) {
         book.printInfo();
+    }
+    cout << endl;
+}
+
+void Library::listCDs() const {
+    cout << "=== CDs in library ===" << endl;
+    for (const auto& cd : cds) {
+        cd.printInfo();
     }
     cout << endl;
 }

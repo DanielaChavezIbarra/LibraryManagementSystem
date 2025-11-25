@@ -5,6 +5,7 @@
 #include "Book.h"
 #include "Member.h"
 #include "Loan.h"
+#include "CD.h"
 
 using namespace std;
 
@@ -13,8 +14,10 @@ private:
     vector<Book> books;
     vector<Member> members;
     vector<Loan> loans;
+    vector<CD> cds;
 
     Book* findBook(const string& isbn);
+    CD* findCD(const string& upc);
     Member* findMember(const string& memberId);
     int countActiveLoansForMember(const string& memberId) const;
     bool isBookAvailable(const string& isbn) const;
@@ -22,8 +25,10 @@ private:
 
 public:
     void addBook(const Book& book);
+    void addCD(const CD& cd);
     void addMember(const Member& member);
     void listBooks() const;
+    void listCDs() const;
     void listMembers() const;
     void listLoans(bool onlyActive = false) const;
     bool borrowBook(const string& memberId, const string& isbn, const string& borrowDate);
